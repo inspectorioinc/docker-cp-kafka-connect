@@ -1,3 +1,5 @@
 FROM confluentinc/cp-kafka-connect:5.0.1
 
-RUN confluent-hub install debezium/debezium-connector-mongodb:0.9.2 --no-prompt
+RUN confluent-hub install debezium/debezium-connector-mongodb:0.9.2 --no-prompt \
+&&  mkdir -p /usr/share/confluent-hub-components/kafka-connect-elasticsearch-source \
+&&  wget -q https://github.com/DarioBalinzo/kafka-connect-elasticsearch-source/raw/master/target/kafka-connect-elastic-source-connect-0.1.jar -O /usr/share/confluent-hub-components/kafka-connect-elasticsearch-source/kafka-connect-elastic-source-connect-0.1.jar

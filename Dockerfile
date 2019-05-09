@@ -1,5 +1,6 @@
 FROM maven:3-jdk-8 as jdbc-builder
 WORKDIR /build
+# hadolint ignore=DL3003
 RUN git clone --depth=1 --recurse-submodules -j8 https://github.com/inspectorioinc/kafka-connect-jdbc.git \
 &&  cd /build/kafka-connect-jdbc/libs/common \
 &&  mvn install -DskipTests \
@@ -8,6 +9,7 @@ RUN git clone --depth=1 --recurse-submodules -j8 https://github.com/inspectorioi
 
 FROM maven:3-jdk-8 as es-source-builder
 WORKDIR /build
+# hadolint ignore=DL3003
 RUN git clone --depth=1 --recurse-submodules -j8 https://github.com/inspectorioinc/kafka-connect-elasticsearch-source.git \
 &&  cd /build/kafka-connect-elasticsearch-source \
 &&  mvn clean package -DskipTests

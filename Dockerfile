@@ -12,7 +12,6 @@ RUN git clone --depth=1 --recurse-submodules -j8 https://github.com/inspectorioi
 &&  cd /build/kafka-connect-elasticsearch-source \
 &&  mvn clean package -DskipTests
 
-
 FROM confluentinc/cp-kafka-connect:5.0.1 as runtime
 
 ENV MONGODB_CONNECTOR_VERSION="0.9.2"

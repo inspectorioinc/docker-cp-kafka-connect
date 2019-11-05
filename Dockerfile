@@ -18,7 +18,7 @@ FROM confluentinc/cp-kafka-connect:5.3.1 as runtime
 
 ENV MONGODB_CONNECTOR_VERSION="0.9.2"
 ENV JDBC_CONNECTOR_VERSION="5.0.1"
-ENV ES_SOURCE_CONNECTOR_VERSION="0.4"
+ENV ES_SOURCE_CONNECTOR_VERSION="0.6"
 
 RUN confluent-hub install debezium/debezium-connector-mongodb:${MONGODB_CONNECTOR_VERSION} --no-prompt \
 &&  mkdir -p /usr/share/confluent-hub-components/kafka-connect-elasticsearch-source

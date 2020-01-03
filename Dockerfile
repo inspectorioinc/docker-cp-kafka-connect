@@ -1,7 +1,7 @@
 FROM maven:3-jdk-8 as jdbc-builder
 WORKDIR /build
 # hadolint ignore=DL3003
-RUN git clone --depth=1 --recurse-submodules -j8 https://github.com/inspectorioinc/kafka-connect-jdbc.git \
+RUN git clone --depth=1 --recurse-submodules -j8 --branch 5.3.1-post https://github.com/inspectorioinc/kafka-connect-jdbc.git \
 &&  cd /build/kafka-connect-jdbc/libs/common \
 &&  mvn install -DskipTests \
 &&  cd /build/kafka-connect-jdbc \
@@ -17,7 +17,7 @@ RUN git clone --depth=1 --recurse-submodules -j8 https://github.com/inspectorioi
 FROM confluentinc/cp-kafka-connect:5.3.1 as runtime
 
 ENV MONGODB_CONNECTOR_VERSION="0.9.2"
-ENV JDBC_CONNECTOR_VERSION="5.0.1"
+ENV JDBC_CONNECTOR_VERSION="5.3.1"
 ENV ES_SOURCE_CONNECTOR_VERSION="0.6"
 
 RUN confluent-hub install debezium/debezium-connector-mongodb:${MONGODB_CONNECTOR_VERSION} --no-prompt \

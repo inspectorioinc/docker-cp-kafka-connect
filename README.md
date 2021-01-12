@@ -3,4 +3,5 @@
 + kafka-connect-jdbc
 + kafka-connect-elasticsearch-source
 + debezium-connector-mongodb
++ debezium-connector-postgresql
 

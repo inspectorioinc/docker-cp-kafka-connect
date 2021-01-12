@@ -17,10 +17,12 @@ RUN git clone --depth=1 --recurse-submodules -j8 https://github.com/inspectorioi
 FROM confluentinc/cp-kafka-connect:5.3.1 as runtime
 
 ENV MONGODB_CONNECTOR_VERSION="0.9.2"
+ENV CDC_POSTGRES_CONNECTOR_VERSION="1.3.1"
 ENV JDBC_CONNECTOR_VERSION="5.3.1"
 ENV ES_SOURCE_CONNECTOR_VERSION="0.6"
 
 RUN confluent-hub install debezium/debezium-connector-mongodb:${MONGODB_CONNECTOR_VERSION} --no-prompt \
+&&  confluent-hub install debezium/debezium-connector-postgresql:${CDC_POSTGRES_CONNECTOR_VERSION} --no-prompt \
 &&  mkdir -p /usr/share/confluent-hub-components/kafka-connect-elasticsearch-source
 
 COPY --from=jdbc-builder /build/kafka-connect-jdbc/target/kafka-connect-jdbc-${JDBC_CONNECTOR_VERSION}.jar  /usr/share/java/kafka-connect-jdbc/kafka-connect-jdbc-${JDBC_CONNECTOR_VERSION}.jar

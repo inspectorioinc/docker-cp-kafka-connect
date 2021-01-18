@@ -16,7 +16,7 @@ RUN git clone --depth=1 --recurse-submodules -j8 https://github.com/inspectorioi
 
 FROM confluentinc/cp-kafka-connect:5.3.1 as runtime
 
-ENV MONGODB_CONNECTOR_VERSION="0.9.2"
+ENV MONGODB_CONNECTOR_VERSION="1.3.1"
 ENV CDC_POSTGRES_CONNECTOR_VERSION="1.3.1"
 ENV JDBC_CONNECTOR_VERSION="5.3.1"
 ENV ES_SOURCE_CONNECTOR_VERSION="0.6"
